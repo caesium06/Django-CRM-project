@@ -1,0 +1,71 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+    <h1 >Customer Record</h1>
+    <!--class="col-md-6 offset-md-3 " -->
+    <br>
+
+    
+
+    {% if record %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Record Details</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .card-container {
+                margin: 20px;
+            }
+            .card-header {
+                background-color: #343a40;
+                color: white;
+            }
+            .card-body {
+                font-size: 1.2em;
+            }
+            .list-group-item {
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container card-container">
+            <div class="card">
+                <div class="card-header">
+                    Record Details
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>ID:</strong> {{ record.id }}</li>
+                        <li class="list-group-item"><strong>Name:</strong> {{ record.first_name }} {{ record.last_name }}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ record.email }}</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{ record.address }}</li>
+                        <li class="list-group-item"><strong>City:</strong> {{ record.city }}</li>
+                        <li class="list-group-item"><strong>State:</strong> {{ record.state }}</li>
+                        <li class="list-group-item"><strong>Zip:</strong> {{ record.zip }}</li>
+                        <li class="list-group-item"><strong>Created:</strong> {{ record.created_at }}</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <a href="{% url 'home' %}"><button type="button" class="btn btn-secondary">Back</button></a>
+            <a href="{% url 'update_record' record.id %}"><button type="button" class="btn btn-secondary">Update Record</button></a>
+            <a href="{% url 'delete_record' record.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+            
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+    </body>
+    </html>
+    
+    {% endif %}
+
+{% endblock %}
